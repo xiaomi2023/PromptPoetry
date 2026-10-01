@@ -118,10 +118,7 @@ The tags are the poem's first 3 `tag` fields; a poem without tags keeps the titl
 
 ### poems_queries_multilingual.jsonl
 
-The source data is the HuggingFace dataset [`AJMC2002/poems`](https://huggingface.co/datasets/AJMC2002/poems) (`poems.parquet`), plus the manually written free-text writing-instruction files `1.txt`~`5.txt`.
-
-1. **Construction**: the manually written queries are deduplicated and then matched against the original poems in the `parquet` by **title**; the successfully matched ones form the samples.
-2. **Multilingual extension**: roughly 21% of the samples are drawn and the model minimax/minimax-m3 is called to translate the English queries into 15 target languages.
+The original poems are first scraped from the dataset [AJMC2002/poems](https://huggingface.co/datasets/AJMC2002/poems), then the model minimax-m3 is called to generate diverse and multilingual user prompts, in order to strengthen the model's ability to follow multilingual instructions.
 
 ### Cleaning
 

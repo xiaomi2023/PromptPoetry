@@ -118,10 +118,7 @@ Write a poem titled "标题" about tag1, tag2, tag3.
 
 ### poems_queries_multilingual.jsonl
 
-原始数据为 HuggingFace 数据集 [`AJMC2002/poems`](https://huggingface.co/datasets/AJMC2002/poems)（`poems.parquet`），外加人工撰写的自由文本写作指令文件 `1.txt`~`5.txt`。
-
-1. **构建**：人工撰写的 query 去重后按**标题**与 `parquet` 中的原诗匹配，匹配成功者构成样本。
-2. **多语种扩展**：按约 21% 的比例抽样，调用 minimax/minimax-m3 模型，把英文 query 翻译为 15 个目标语种。
+首先从数据集 [AJMC2002/poems](https://huggingface.co/datasets/AJMC2002/poems)抓取诗歌原文，然后调用 minimax-m3 生成多样和多语种的用户 prompt，以增强模型对多语种指令的遵循能力。
 
 ### 清洗
 所有数据均进行了细致的清洗，包括修复乱码、剔除空正文行等。
